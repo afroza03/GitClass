@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Form Vslidation</title>
+</head>
+
+<body>
+<form name="myForm">
+Name: <input type="text" name="inputName" /> <br />
+Email: <input type="email" name="inputEmail" /> <br />
+Password: <input type="password" name="inputPassword" /> <br />
+Confirm Password: <input type="password" name="inputConfirmPassword" /> <br />
+Gender: <input type="radio"  name="gender" value="Male" checked>Male <input  type="radio" name="gender" value="Female">Female <br>
+ 			Hobby: 
+			<input type="checkbox" class="Checkbox" name="swim" value="swim" checked> Swiming 
+			  <input type="checkbox" class="Checkbox" name="ride" value="ride"> Riding<br>
+			<button type="button" onClick="openWindow()">Submit</button>
+</form>
+<script>
+function openWindow() {
+			var inputName = document.myForm.inputName.value;
+			var inputEmail = document.myForm.inputEmail.value;
+			var inputPassword = document.myForm.inputPassword.value;
+			var inputConfirmPassword = document.myForm.inputConfirmPassword.value;
+			var gender = document.querySelector("input[name=gender]:checked").value
+			var hobby = document.querySelector('input[class=Checkbox]:checked').value;
+			if (inputName === "") {
+			 alert("Please input name")
+			 return;
+			}
+			if (inputPassword === "") {
+			 alert("Please input password")
+			 return;
+			}
+			if (inputPassword != inputConfirmPassword) {
+			 alert("Password Mismatch")
+			 return;
+			}
+			if (inputEmail.indexOf("@") === -1 ) {
+			 alert("Please input valid email")
+			 return;
+			}
+			
+			var thatWindow = window.open("", "Form Validation", "width=600,height=900");
+			thatWindow.document.write("<p>Name: "+ inputName+"</p>");
+			thatWindow.document.write("<p>Email: "+ inputEmail+"</p>");
+			thatWindow.document.write("<p>Password: "+ inputPassword+"</p>");
+			thatWindow.document.write("<p>Gender: "+ gender+"</p>");
+			thatWindow.document.write("<p>Hobby: "+ hobby+"</p>");
+			
+		}
+</script>
+</body>
+</html>
